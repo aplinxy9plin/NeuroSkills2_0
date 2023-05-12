@@ -1,17 +1,19 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
-import path from 'path'
-import url from 'url'
+import path from 'path';
+import url from 'url';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const filename = url.fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(),tsconfigPaths(),],
+  plugins: [react(), tsconfigPaths()],
   resolve: {
-    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
-    mainFields:['']
+    alias: [
+      { find: '@', replacement: path.resolve(dirname, 'src') },
+      { find: 'node-fetch', replacement: 'isomorphic-fetch' },
+    ],
+    mainFields: [''],
   },
-})
+});

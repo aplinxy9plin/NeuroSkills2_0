@@ -54,7 +54,7 @@
         "caseInsensitive": true
       }
     }],
-    "import/no-default-export": "error",
+    "import/no-default-export": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/consistent-type-definitions": "off",
@@ -71,7 +71,14 @@
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/no-confusing-void-expression": "off",
-    "boundaries/element-types": "error"
+    "boundaries/element-types": "off",
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/require-default-props": "off",
+    "no-param-reassign": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "no-restricted-syntax": "off"
   },
   "overrides": [
     {

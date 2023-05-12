@@ -1,8 +1,19 @@
 import React from 'react';
-import { Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
+import { CoursePage } from '@/pages/Course';
+import { LandingPage } from '@/pages/Landing';
+import { ProfilePage } from '@/pages/Profile';
+import { TopicPage } from '@/pages/Topic';
 
 const AppRouter = () => {
-  return <Routes>s</Routes>;
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/course/:courseId" element={<CoursePage />} />
+      <Route path="/topic/:topicId" element={<TopicPage />} />
+    </Routes>
+  );
 };
 
 export default AppRouter;
