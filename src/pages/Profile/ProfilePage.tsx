@@ -1,16 +1,16 @@
-import { Stack } from '@mantine/core';
+import { AppShell } from '@mantine/core';
 import React from 'react';
 import { selectCourses } from '@/entities/course';
 import { useAppSelector } from '@/shared/model';
-import { CourseList } from '@/widgets/CourseList/ui/CourseList';
-import { NewCourse } from '@/widgets/NewCourse';
+import { CourseList } from '@/widgets/CourseList';
+import { MyHeader } from '@/widgets/Header/Header';
+import { Logo } from '@/widgets/Logo';
 
 export const ProfilePage = () => {
   const courses = useAppSelector(selectCourses);
   return (
-    <Stack>
-      <NewCourse />
+    <AppShell padding="md" header={<MyHeader logo={<Logo />} />}>
       <CourseList courses={courses} />
-    </Stack>
+    </AppShell>
   );
 };

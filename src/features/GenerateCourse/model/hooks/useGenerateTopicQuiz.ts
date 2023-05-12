@@ -1,4 +1,3 @@
-import React from 'react';
 import * as uuid from 'uuid';
 import { Quiz, setQuizzes } from '@/entities/quiz';
 import { Topic } from '@/entities/topic';
@@ -15,7 +14,7 @@ export const useGenerateTopicQuiz = () => {
     const quizzes: Quiz[] = JSON.parse(response);
     let order = 1;
     for (const quiz of quizzes) {
-      quiz.id = uuid.v4();
+      quiz.id = uuid.v1();
       quiz.topicId = topic.id;
       quiz.completed = false;
       quiz.order = order;

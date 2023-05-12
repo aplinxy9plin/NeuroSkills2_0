@@ -1,4 +1,4 @@
-import { Grid } from '@mantine/core';
+import { Button, Grid, SimpleGrid } from '@mantine/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Course, CourseCard } from '@/entities/course';
@@ -10,12 +10,27 @@ interface CourseListProps {
 export const CourseList = (props: CourseListProps) => {
   const { courses } = props;
   return (
-    <Grid>
+    <SimpleGrid
+      cols={3}
+      breakpoints={[
+        { maxWidth: 'lg', cols: 3, spacing: 'md' },
+        { maxWidth: 'md', cols: 2, spacing: 'sm' },
+        { maxWidth: 'sm', cols: 1, spacing: 'sm' },
+      ]}
+    >
       {courses.map((course) => (
-        <Grid.Col key={course.id} span={4}>
-          <CourseCard course={course} actionSlot={<Link to={`/course/${course.id}`}>Open</Link>} />
-        </Grid.Col>
+        <CourseCard
+          key={course.id}
+          course={course}
+          actionSlot={
+            <Link to={`/course/${course.id}`}>
+              <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+                Open
+              </Button>
+            </Link>
+          }
+        />
       ))}
-    </Grid>
+    </SimpleGrid>
   );
 };

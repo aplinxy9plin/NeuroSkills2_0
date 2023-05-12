@@ -1,21 +1,26 @@
-import { Stack } from '@mantine/core';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Topic } from '@/entities/topic';
+import { useStyles } from './TopicList.style';
 
 interface TopicListProps {
   topics: Topic[];
 }
+
 export const TopicList = (props: TopicListProps) => {
+  const { classes, cx } = useStyles();
   const { topics } = props;
-  topics.sort((a, b) => a.order - b.order);
   return (
-    <Stack>
+    <>
       {topics.map((topic) => (
-        <Link to={`/topic/${topic.id}`} key={topic.id}>
-          {topic.name}
-        </Link>
+        <NavLink
+          className={({ isActive }) => cx(classes.link, { [classes.linkActive]: isActive })}
+          to={`/course/${topic.courseId}/topic/${topic.id}`}
+          key={topic.id}
+        >
+          <span>{topic.name}</span>
+        </NavLink>
       ))}
-    </Stack>
+    </>
   );
 };

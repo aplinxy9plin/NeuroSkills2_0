@@ -1,9 +1,13 @@
-import { Stack } from '@mantine/core';
+import { AppShell, Badge, Center, Title } from '@mantine/core';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { selectCourseById } from '@/entities/course';
 import { selectCourseTopics } from '@/entities/topic';
 import { useAppSelector } from '@/shared/model';
+import { BurgerMenu } from '@/widgets/BurgerMenu';
+import { LayoutHeader } from '@/widgets/Header';
+import { Logo } from '@/widgets/Logo';
+import { CourseNavbar } from '@/widgets/Navbar';
 import { TopicList } from '@/widgets/TopicList';
 
 export const CoursePage = () => {
@@ -12,9 +16,18 @@ export const CoursePage = () => {
   const topics = useAppSelector((state: RootState) => selectCourseTopics(state, courseId || ''));
 
   return (
-    <Stack>
-      <div>{course?.name}</div>
-      {topics && <TopicList topics={topics} />}
-    </Stack>
+    <AppShell
+      navbar={<CourseNavbar topics={topics} />}
+      header={
+        <LayoutHeader
+          logo={<Logo badge={<Badge color="teal">Beta</Badge>} />}
+          actionSlot={<BurgerMenu bodySlot={<TopicList topics={topics} />} />}
+        />
+      }
+    >
+      <Center>
+        <Title>{course?.name}</Title>
+      </Center>
+    </AppShell>
   );
 };

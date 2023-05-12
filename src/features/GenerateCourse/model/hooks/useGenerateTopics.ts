@@ -13,7 +13,7 @@ export const useGenerateTopics = () => {
     const prompt = getCourseTopicsPrompt(course.name, 10);
     let order = 1;
     let topic: Topic = {
-      id: uuid.v4(),
+      id: uuid.v1(),
       courseId: course.id,
       name: '',
       content: '',
@@ -26,7 +26,7 @@ export const useGenerateTopics = () => {
         topic = { ...topic, name: topic.name + sides[0] };
         dispatch(updateTopic(topic));
         topics.push(topic);
-        topic = { ...topic, id: uuid.v4(), name: sides[1], order: (order += 1) };
+        topic = { ...topic, id: uuid.v1(), name: sides[1], order: (order += 1) };
         dispatch(addTopic(topic));
       } else {
         topic = { ...topic, name: topic.name + chunk };
