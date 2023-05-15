@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Course } from './types';
+import { Course, UpdateCourse } from './types';
 
 type InitialStateType = {
   courses: Course[];
@@ -21,9 +21,11 @@ export const courseSlice = createSlice({
     addCourse: (state, action: PayloadAction<Course>) => {
       state.courses.push(action.payload);
     },
-    updateCourse: (state, action: PayloadAction<Course>) => {
-      const course = action.payload;
-      state.courses = [...state.courses.filter((c) => c.id !== course.id), course];
+    updateCourse: (state, action: PayloadAction<UpdateCourse>) => {
+      let course = action.payload;
+      const target = state.courses.find((c) => c.id === course.id);
+      course = { ...target, ...course };
+      state.courses = [...state.courses.filter((c) => c.id !== course.id), course as Course];
     },
     setCurrentCourse: (state, action: PayloadAction<Course | null>) => {
       state.currentCourse = action.payload;
@@ -32,7 +34,6 @@ export const courseSlice = createSlice({
 });
 
 export const selectCourses = (state: RootState) => state.courses.courses;
-
 export const selectCourseById = (state: RootState, id: string) => {
   return state.courses.courses.find((c) => c.id === id);
 };

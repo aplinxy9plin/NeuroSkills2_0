@@ -1,4 +1,4 @@
-import { Group, Header, rem } from '@mantine/core';
+import { Flex, Group, Header, rem } from '@mantine/core';
 import React from 'react';
 import { useStyles } from './Header.style';
 
@@ -13,7 +13,7 @@ export const MyHeader = (props: HeaderProps) => {
     <Header height={rem(60)} p="xs" mb={120}>
       <Group position="apart" w="100%" className={classes.header}>
         {logo}
-        {actionSlot}
+        <Flex gap={10}>{actionSlot}</Flex>
       </Group>
     </Header>
   );

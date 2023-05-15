@@ -1,1 +1,1 @@
-export { NewCourse } from './ui/NewCourse';
+export { NewCourse } from './NewCourse';

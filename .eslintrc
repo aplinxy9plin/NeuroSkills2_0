@@ -78,7 +78,9 @@
     "react/require-default-props": "off",
     "no-param-reassign": "off",
     "react-hooks/exhaustive-deps": "off",
-    "no-restricted-syntax": "off"
+    "no-restricted-syntax": "off",
+    "no-await-in-loop": "off",
+    "react/jsx-props-no-spreading": 'off'
   },
   "overrides": [
     {

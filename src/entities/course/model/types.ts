@@ -6,6 +6,8 @@ export type Course = {
   description: string;
 };
 
+export type UpdateCourse = Pick<Course, 'id'> & Partial<Omit<Course, 'id'>>;
+
 export type CourseWithTopics = Course & {
   topics: Topic[];
 };

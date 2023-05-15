@@ -1,4 +1,4 @@
-import { Button, Grid, SimpleGrid } from '@mantine/core';
+import { Button, SimpleGrid } from '@mantine/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Course, CourseCard } from '@/entities/course';

@@ -1,7 +1,6 @@
 export type Chat = {
   id: string;
   topicId: string;
-  messages: ChatMessage[];
 };
 
 export type ChatMessage = {
@@ -9,5 +8,11 @@ export type ChatMessage = {
   chatId: string;
   text: string;
   fromUser: boolean;
-  date: Date;
+  date: string;
 };
+
+export type ChatWithMessages = Chat & {
+  messages: ChatMessage[];
+};
+
+export type UpdateMessage = Pick<ChatMessage, 'id'> & Partial<Omit<ChatMessage, 'id'>>;

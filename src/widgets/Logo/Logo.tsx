@@ -1,13 +1,9 @@
-import { Flex, Title } from '@mantine/core';
-import React, { ReactNode } from 'react';
+import { Badge, Flex, Title } from '@mantine/core';
+import React from 'react';
 import { GiAtomicSlashes } from 'react-icons/all';
 import { Link } from 'react-router-dom';
 
-interface LogoProps {
-  badge?: ReactNode;
-}
-export const Logo = (props: LogoProps) => {
-  const { badge } = props;
+export const Logo = () => {
   return (
     <Link to="/">
       <Flex>
@@ -17,9 +13,8 @@ export const Logo = (props: LogoProps) => {
             NeuroSkills
           </Title>
         </Flex>
-        {badge}
+        <Badge color="teal">Beta</Badge>
       </Flex>
-      {/* <Badge color="teal">Beta</Badge> */}
     </Link>
   );
 };

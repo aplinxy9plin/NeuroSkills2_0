@@ -2,11 +2,13 @@ export type Quiz = {
   id: string;
   topicId: string;
   question: string;
-  options: QuizOptions[];
+  options: QuizOptions;
   answer: QuizAnswer;
   completed: boolean;
   order: number;
 };
+
+export type UpdateQuiz = Pick<Quiz, 'id'> & Partial<Omit<Quiz, 'id'>>;
 
 export type QuizOptions = {
   a: string;

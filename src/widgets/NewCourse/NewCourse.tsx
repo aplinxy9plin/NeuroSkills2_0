@@ -1,6 +1,5 @@
-import { Anchor, Flex, Input } from '@mantine/core';
+import { Flex, Input } from '@mantine/core';
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
 import { CreateCourseButton } from '@/features/GenerateCourse';
 
 export const NewCourse = () => {

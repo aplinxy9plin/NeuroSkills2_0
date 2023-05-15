@@ -10,6 +10,7 @@ interface TopicListProps {
 export const TopicList = (props: TopicListProps) => {
   const { classes, cx } = useStyles();
   const { topics } = props;
+  topics.sort((a, b) => a.order - b.order);
   return (
     <>
       {topics.map((topic) => (

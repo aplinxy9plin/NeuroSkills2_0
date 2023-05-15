@@ -1,8 +1,9 @@
-import { AppShell, Badge, Center, Title } from '@mantine/core';
+import { AppShell, Center, Stack, Text, Title } from '@mantine/core';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { selectCourseById } from '@/entities/course';
 import { selectCourseTopics } from '@/entities/topic';
+import { ChangeTheme } from '@/features/ChangeTheme';
 import { useAppSelector } from '@/shared/model';
 import { BurgerMenu } from '@/widgets/BurgerMenu';
 import { LayoutHeader } from '@/widgets/Header';
@@ -20,13 +21,25 @@ export const CoursePage = () => {
       navbar={<CourseNavbar topics={topics} />}
       header={
         <LayoutHeader
-          logo={<Logo badge={<Badge color="teal">Beta</Badge>} />}
-          actionSlot={<BurgerMenu bodySlot={<TopicList topics={topics} />} />}
+          logo={<Logo />}
+          actionSlot={
+            <>
+              <BurgerMenu bodySlot={<TopicList topics={topics} />} />
+              <ChangeTheme />
+            </>
+          }
         />
       }
     >
-      <Center>
-        <Title>{course?.name}</Title>
+      <Center h="100%">
+        <Stack h="100%" align="center" justify="center">
+          <Text fz="1.5rem" align="center" fw="bold">
+            Вы начали прохождение курса <Title order={1} color="blue.5">{`"${course?.name}"`}</Title>
+          </Text>
+          <Text size="md" color="dimmed" align="center">
+            Нажмите на нужную вам тему и мы начнем генерировать для вас инфу)
+          </Text>
+        </Stack>
       </Center>
     </AppShell>
   );

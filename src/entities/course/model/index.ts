@@ -8,4 +8,4 @@ export {
   selectCurrentCourse,
   selectCourseById,
 } from './slice';
-export type { Course, CourseWithTopics } from './types';
+export type { Course, CourseWithTopics, UpdateCourse } from './types';

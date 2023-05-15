@@ -1,4 +1,5 @@
 import * as uuid from 'uuid';
+import { addChat, Chat } from '@/entities/chat';
 import { Course } from '@/entities/course';
 import { addTopic, Topic, updateTopic } from '@/entities/topic';
 import { useAppDispatch, useGptPrompt } from '@/shared/model';
@@ -20,6 +21,11 @@ export const useGenerateTopics = () => {
       order,
     };
     dispatch(addTopic(topic));
+    const chat: Chat = {
+      id: uuid.v1(),
+      topicId: topic.id,
+    };
+    dispatch(addChat(chat));
     await generate(prompt, (chunk: string) => {
       if (chunk.includes('%')) {
         const sides = chunk.split('%');

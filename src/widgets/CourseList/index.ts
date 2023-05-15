@@ -1,1 +1,1 @@
-export { CourseList } from './ui/CourseList';
+export { CourseList } from './CourseList';
