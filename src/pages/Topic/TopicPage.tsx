@@ -5,15 +5,18 @@ import { useParams } from 'react-router-dom';
 import { selectTopicQuizzes } from '@/entities/quiz';
 import { selectCourseTopics, selectTopicById } from '@/entities/topic';
 import { ChangeTheme } from '@/features/ChangeTheme';
-import { useAppSelector } from '@/shared/model';
+import { useAppSelector, withContextMenu } from '@/shared/model';
 import { AssistantChat } from '@/widgets/AssistantChat';
 import { BurgerMenu } from '@/widgets/BurgerMenu';
+import { ContextMenu } from '@/widgets/ConextMenu';
 import { LayoutHeader } from '@/widgets/Header';
 import { Logo } from '@/widgets/Logo';
 import { CourseNavbar } from '@/widgets/Navbar';
 import { QuizList } from '@/widgets/QuizList';
 import { TopicList } from '@/widgets/TopicList';
 import { TopicPaper } from '@/widgets/TopicPaper';
+
+const TopicPaperWithContextMenu = withContextMenu(TopicPaper, ContextMenu, 'on-text-select');
 
 export const TopicPage = () => {
   const { courseId, topicId } = useParams();
@@ -37,7 +40,7 @@ export const TopicPage = () => {
       }
     >
       <ScrollArea h="87vh">
-        {topic && <TopicPaper topic={topic} />}
+        {topic && <TopicPaperWithContextMenu topic={topic} />}
         {!!quizzes.length && (
           <>
             <Divider size="xl" label={<Title order={3}>Проверь свои знания!</Title>} labelPosition="center" />

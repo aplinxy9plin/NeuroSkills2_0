@@ -24,7 +24,7 @@ export const useGenerateCourse = () => {
     const topics = await generateTopics(course);
     for (let i = 0; i < 1; i += 1) {
       await generateTopicContent(topics[i]);
-      // await generateQuiz(topics[i]);
+      await generateQuiz(topics[i]);
     }
   };
 
