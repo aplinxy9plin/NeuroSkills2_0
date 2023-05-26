@@ -8,7 +8,7 @@ const filename = url.fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export default defineConfig({
-  base: '/neuroskills',
+  base: '/NeuroSkills2_0',
   plugins: [react(), tsconfigPaths()],
   resolve: {
     alias: [
