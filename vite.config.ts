@@ -15,6 +15,5 @@ export default defineConfig({
       { find: '@', replacement: path.resolve(dirname, 'src') },
       { find: 'node-fetch', replacement: 'isomorphic-fetch' },
     ],
-    mainFields: [''],
   },
 });

@@ -9,11 +9,13 @@ import { TopicPage } from '@/pages/Topic';
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/course/:courseId" element={<CoursePage />} />
-      <Route path="/course/:courseId/topic/:topicId" element={<TopicPage />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="/NeuroSkills2_0">
+        <Route index element={<LandingPage />} />
+        <Route path="profile" element={<ProfilePage />} />
+        <Route path="course/:courseId" element={<CoursePage />} />
+        <Route path="course/:courseId/topic/:topicId" element={<TopicPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
     </Routes>
   );
 };
