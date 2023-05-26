@@ -16,3 +16,9 @@ export type ChatWithMessages = Chat & {
 };
 
 export type UpdateMessage = Pick<ChatMessage, 'id'> & Partial<Omit<ChatMessage, 'id'>>;
+
+export type UploadPinataJSON = {
+  IpfsHash: string;
+  PinSize: number;
+  Timestamp: string;
+};

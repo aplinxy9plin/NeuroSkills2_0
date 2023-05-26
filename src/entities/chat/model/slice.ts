@@ -4,11 +4,15 @@ import { Chat, ChatMessage, UpdateMessage } from './types';
 type InitialStateType = {
   chats: Chat[];
   messages: ChatMessage[];
+  tokenId?: string;
+  isUploadingNFT: boolean;
 };
 
 const initialState: InitialStateType = {
   chats: [],
   messages: [],
+  tokenId: undefined,
+  isUploadingNFT: false,
 };
 
 export const chatSlice = createSlice({
@@ -33,6 +37,16 @@ export const chatSlice = createSlice({
       const message = { ...target, ...updated } as ChatMessage;
       state.messages = [...state.messages.filter((m) => m.id !== updated.id), message];
     },
+    setTokenId: (state, action: PayloadAction<{ tokenId: string }>) => {
+      state.tokenId = String(action.payload.tokenId);
+      console.log(state.tokenId);
+    },
+    setUploadingNFT: (state, action: PayloadAction<{ isUploading: boolean }>) => {
+      state.isUploadingNFT = action.payload.isUploading;
+    },
+    clearTokenId: (state) => {
+      state.tokenId = undefined;
+    },
   },
 });
 
@@ -49,4 +63,8 @@ export const selectMessagesByChat = (state: RootState, chatId: string) => {
   return state.chats.messages.filter((m) => m.chatId === chatId);
 };
 
-export const { setChats, setMessages, addChat, addMessage, updateMessage } = chatSlice.actions;
+export const selectTokenId = (state: RootState) => state.chats.tokenId;
+export const selectIsUploadingNFT = (state: RootState) => state.chats.isUploadingNFT;
+
+export const { setChats, setMessages, addChat, addMessage, updateMessage, setTokenId, setUploadingNFT, clearTokenId } =
+  chatSlice.actions;
