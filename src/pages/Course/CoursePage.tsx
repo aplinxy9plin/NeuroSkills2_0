@@ -1,6 +1,6 @@
-import { AppShell, Center, Stack, Text, Title } from '@mantine/core';
+import { AppShell, Button, Center, Stack, Text, Title } from '@mantine/core';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { selectCourseById } from '@/entities/course';
 import { selectCourseTopics } from '@/entities/topic';
 import { ChangeTheme } from '@/features/ChangeTheme';
@@ -26,6 +26,9 @@ export const CoursePage = () => {
             <>
               <BurgerMenu bodySlot={<TopicList topics={topics} />} />
               <ChangeTheme />
+              <Link to="mindmap">
+                <Button>MindMap</Button>
+              </Link>
             </>
           }
         />
