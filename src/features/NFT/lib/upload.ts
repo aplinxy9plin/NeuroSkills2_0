@@ -41,7 +41,7 @@ export const uploadNFT = (payload: { text: string }, onError: () => void, callba
             .then((res) => res.json())
             .then(async (result: UploadPinataJSON) => {
               const contractAddress =
-                '0xdF2e58FCe5Bfaf95f5D9E14735d5EeDaC505978F' || import.meta.env.VITE_CONTRACT_ADDRESS;
+                '0xC59991D8B4A568291984c0f448326B3427f561c8' || import.meta.env.VITE_CONTRACT_ADDRESS;
               const web3 = new Web3(window.ethereum);
               const contract = new web3.eth.Contract(ABI as unknown as AbiItem, contractAddress);
               const createNFT = await contract.methods.safeMint(address, result.IpfsHash).send({

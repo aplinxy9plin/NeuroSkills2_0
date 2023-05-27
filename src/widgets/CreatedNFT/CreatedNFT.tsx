@@ -12,7 +12,7 @@ export const CreatedNFT = () => {
     dispatch(clearTokenId());
   };
 
-  const contractAddress = '0xdF2e58FCe5Bfaf95f5D9E14735d5EeDaC505978F' || import.meta.env.VITE_CONTRACT_ADDRESS;
+  const contractAddress = '0xC59991D8B4A568291984c0f448326B3427f561c8' || import.meta.env.VITE_CONTRACT_ADDRESS;
   const uri = `https://testnets.opensea.io/assets/goerli/${contractAddress}/`;
 
   return (

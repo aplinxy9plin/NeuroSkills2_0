@@ -7,7 +7,7 @@ export const useGptPrompt = () => {
   const generate = async (prompt: string, handleChunk?: (ch: string) => void) => {
     let response = '';
     setIsGenerating(true);
-    const key = import.meta.env.VITE_OPEN_AI_API_KEY;
+    const key = localStorage.getItem('openai-key') || import.meta.env.VITE_OPEN_AI_API_KEY;
     const messages = [{ role: 'user', content: prompt }];
     await fetchStreamedChat(
       {

@@ -44,7 +44,7 @@ export const MyHeader = (props: HeaderProps) => {
         {logo}
         <Flex gap={10} justify="center" align="center">
           {actionSlot}
-          <Button onClick={openVoiceModal}>Озвучить</Button>
+          {/* <Button onClick={openVoiceModal}>Озвучить</Button> */}
           <Button loading={isUploadingNFT} onClick={sell}>
             Продать
           </Button>
