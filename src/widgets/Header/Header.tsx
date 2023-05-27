@@ -1,6 +1,6 @@
 import { Button, Flex, Group, Header, rem } from '@mantine/core';
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { selectIsUploadingNFT, setTokenId, setUploadingNFT } from '@/entities/chat/model/slice';
 import { selectCourseTopics } from '@/entities/topic';
 import { uploadNFT } from '@/features/NFT/lib/upload';
