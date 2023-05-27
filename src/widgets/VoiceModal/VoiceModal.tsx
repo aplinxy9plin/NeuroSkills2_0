@@ -1,15 +1,13 @@
-import { Button, Flex, Group, Modal, useMantineTheme } from '@mantine/core';
+import { useState } from 'react'
+import { Button, FileInput, Flex, Group, Modal, useMantineTheme } from '@mantine/core';
 import { selectOpenVoice, setVoiceOpen } from '@/entities/chat/model/slice';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
-import CheckedIcon from './checked.svg';
 import { useStyles } from './VoiceModal.style';
-
-const defaultChars = Array(20).fill({
-  name: 'Sam',
-  url: 'chars/sam.jpeg',
-});
+import { defaultChars } from './data/defaultChars';
 
 export const VoiceModal = () => {
+  const [choosen, setChoosen] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
   const { classes } = useStyles();
   const isVoiceOpen = useAppSelector((state: RootState) => selectOpenVoice(state));
   const dispatch = useAppDispatch();
@@ -17,6 +15,13 @@ export const VoiceModal = () => {
   const close = () => {
     dispatch(setVoiceOpen({ isVoiceOpen: false }));
   };
+
+  const upload = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 5000);
+  }
 
   return (
     <Modal
@@ -28,20 +33,30 @@ export const VoiceModal = () => {
         blur: 3,
       }}
       centered
-      size="55%"
+      size="30%"
     >
-      <Flex align="center" justify="center">
+      <Flex align="center" justify="center" gap={16}>
         <Group className={classes.charsContainer}>
           <div className={classes.w100}>
             <span>Выберите аватар</span>
           </div>
           {defaultChars.map((item, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <img className={classes.avatar} key={`char_${index}`} width="100px" src={item.url} alt={item.name} />
+            <span className={classes.avatarContainer} onClick={() => setChoosen(index)}>
+              <img className={`${classes.avatar} ${index === choosen ? classes.avatarChoosen : ''}`} key={`char_${index}`} width="100px" src={item.uri} alt={item.name} />
+            </span>
           ))}
         </Group>
         <Group>
-          <Button>Загрузить файл</Button>
+          <span>
+            <b>ИЛИ</b>
+          </span>
+        </Group>
+        <Group>
+          <FileInput
+            placeholder="Выбрать файл"
+            label="Ваш персонаж"
+          />
+          <Button loading={loading} onClick={upload}>Отправить</Button>
         </Group>
       </Flex>
     </Modal>
