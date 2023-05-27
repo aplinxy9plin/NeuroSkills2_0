@@ -6,6 +6,7 @@ type InitialStateType = {
   messages: ChatMessage[];
   tokenId?: string;
   isUploadingNFT: boolean;
+  isVoiceOpen: boolean;
 };
 
 const initialState: InitialStateType = {
@@ -13,6 +14,7 @@ const initialState: InitialStateType = {
   messages: [],
   tokenId: undefined,
   isUploadingNFT: false,
+  isVoiceOpen: false,
 };
 
 export const chatSlice = createSlice({
@@ -44,6 +46,9 @@ export const chatSlice = createSlice({
     setUploadingNFT: (state, action: PayloadAction<{ isUploading: boolean }>) => {
       state.isUploadingNFT = action.payload.isUploading;
     },
+    setVoiceOpen: (state, action: PayloadAction<{ isVoiceOpen: boolean }>) => {
+      state.isVoiceOpen = action.payload.isVoiceOpen;
+    },
     clearTokenId: (state) => {
       state.tokenId = undefined;
     },
@@ -66,5 +71,16 @@ export const selectMessagesByChat = (state: RootState, chatId: string) => {
 export const selectTokenId = (state: RootState) => state.chats.tokenId;
 export const selectIsUploadingNFT = (state: RootState) => state.chats.isUploadingNFT;
 
-export const { setChats, setMessages, addChat, addMessage, updateMessage, setTokenId, setUploadingNFT, clearTokenId } =
-  chatSlice.actions;
+export const selectOpenVoice = (state: RootState) => state.chats.isVoiceOpen;
+
+export const {
+  setChats,
+  setMessages,
+  addChat,
+  addMessage,
+  updateMessage,
+  setTokenId,
+  setUploadingNFT,
+  setVoiceOpen,
+  clearTokenId,
+} = chatSlice.actions;

@@ -1,7 +1,7 @@
 import { Button, Flex, Group, Header, rem } from '@mantine/core';
 import React from 'react';
+import { selectIsUploadingNFT, setTokenId, setUploadingNFT, setVoiceOpen } from '@/entities/chat/model/slice';
 import { Link, useParams } from 'react-router-dom';
-import { selectIsUploadingNFT, setTokenId, setUploadingNFT } from '@/entities/chat/model/slice';
 import { selectCourseTopics } from '@/entities/topic';
 import { uploadNFT } from '@/features/NFT/lib/upload';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
@@ -34,12 +34,17 @@ export const MyHeader = (props: HeaderProps) => {
     );
   };
 
+  const openVoiceModal = (): void => {
+    dispatch(setVoiceOpen({ isVoiceOpen: true }));
+  };
+
   return (
     <Header height={rem(60)} p="xs" mb={120}>
       <Group position="apart" w="100%" className={classes.header}>
         {logo}
         <Flex gap={10} justify="center" align="center">
           {actionSlot}
+          <Button onClick={openVoiceModal}>Озвучить</Button>
           <Button loading={isUploadingNFT} onClick={sell}>
             Продать
           </Button>

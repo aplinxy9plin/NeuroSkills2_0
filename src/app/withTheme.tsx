@@ -1,6 +1,7 @@
-import { CreatedNFT } from '@/widgets/CreatedNFT/CreatedNFT';
 import { ColorScheme, ColorSchemeProvider, MantineProvider, MantineThemeOverride } from '@mantine/core';
 import { ComponentType, useState } from 'react';
+import { CreatedNFT } from '@/widgets/CreatedNFT/CreatedNFT';
+import { VoiceModal } from '@/widgets/VoiceModal';
 
 const myTheme: MantineThemeOverride = {
   colorScheme: 'dark',
@@ -18,6 +19,7 @@ export function withTheme<T extends object>(Component: ComponentType<T>) {
         <MantineProvider theme={{ ...myTheme, colorScheme }} withGlobalStyles withNormalizeCSS>
           <Component {...props} />
           <CreatedNFT />
+          <VoiceModal />
         </MantineProvider>
       </ColorSchemeProvider>
     );
